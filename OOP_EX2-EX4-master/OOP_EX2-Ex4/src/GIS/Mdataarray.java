@@ -13,7 +13,7 @@ public class Mdataarray implements Meta_data  {
 	
 	/**
 	 *  adding a new Meta_data to the array
-	 *
+	 * @param dataHolder the meta data we add to arr
 	 */
 	public void add(Meta_data dataHolder) {
 		arr.add(dataHolder);

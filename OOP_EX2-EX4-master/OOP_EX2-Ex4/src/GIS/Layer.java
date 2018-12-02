@@ -15,7 +15,10 @@ public class Layer implements GIS_layer {
 	
 	/**
 	 *  this builder gets string elements from a csv file and builds with it a single layer
-	 *
+	 * @param fileName the name of the csv file we translate to layer
+	 * 
+	 * 
+	 * 
 	 */
 	public Layer(String fileName) {
 		Csv2kml temp = new Csv2kml(fileName);
@@ -35,7 +38,7 @@ public class Layer implements GIS_layer {
 	 *
 	 */
 	@Override
-	public boolean add(GIS_element e) { //TODO
+	public boolean add(GIS_element e) {
 		if(layerSet.contains(e))
 			return false; // already exists so we don't add again
 		else {
@@ -43,7 +46,11 @@ public class Layer implements GIS_layer {
 		}
 		
 	}
-
+/**
+ * a function that add all the elements in c that this layer not contain them to this layer
+ * @param c the collection we want to add to this layer
+ * 
+ */
 	@Override //TODO
 	public boolean addAll(Collection<? extends GIS_element> c) { // true if this collection changed as a result of the call
 		int counter = 0;
@@ -51,13 +58,13 @@ public class Layer implements GIS_layer {
 		Iterator<? extends GIS_element> it = c.iterator();
 		while(it.hasNext()) {
 			GIS_element temp = it.next();
-			flag = this.add(temp);
-			if(flag == true)
+			flag = this.add(temp);//if we added the element than flag true
+			if(flag == true)//if flag true counter++
 				counter++;
 			
 			flag = false; // reseting the flag for further use
 		}
-		if(counter>0)
+		if(counter>0)//if counter > 0 then we added at least 1 element to this layer 
 			return true; // collection changed
 		else
 			return false; // didn't add at all.
@@ -127,16 +134,16 @@ public class Layer implements GIS_layer {
 	
 	/**
 	 *  returns the meta data of all the elements in the layer 
-	 *
+	 * 
+	 *  
 	 */
 	@Override
 	public Meta_data get_Meta_data() {
-
 		Mdataarray arr=new Mdataarray();
 		Iterator<GIS_element> it = layerSet.iterator();
 		while(it.hasNext()) {
 			GIS_element temp = it.next();
-			arr.add((Mdata)temp.getData());
+			arr.add((Mdata)temp.getData());//add to arr this element data
 
 		}
 		return arr;
@@ -144,12 +151,12 @@ public class Layer implements GIS_layer {
 	
 	/**
 	 *  a function that translates the layer to a kml file
-	 *
+	 *  
 	 */
 	public void sendToKml(){
 
 		layerToKml temp=new layerToKml();
-		temp.DataToKml(this);
+		temp.DataToKml(this);//create a kml file
 
 
 	}

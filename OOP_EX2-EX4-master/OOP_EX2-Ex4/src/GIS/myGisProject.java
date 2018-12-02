@@ -88,7 +88,8 @@ public class myGisProject implements GIS_project {
 	
 	/**
 	 *  returns the Meta_data of all the layers that are in the array
-	 *
+	 * 
+	 *  
 	 */
 	@Override
 	public Meta_data get_Meta_data() {
@@ -96,7 +97,7 @@ public class myGisProject implements GIS_project {
 		Iterator<GIS_layer> it = list.iterator();
 		while(it.hasNext()) {
 			Meta_data temp=it.next().get_Meta_data();
-			arr.add(temp);
+			arr.add(temp);//add the meta data to arr
 		}
 		return arr;
 	}
@@ -105,24 +106,29 @@ public class myGisProject implements GIS_project {
 	 *  gets the path for the folder and for each csv ending file,
 	 *  enters to the array as a layer and enters all to a single layer,
 	 *  and creates a kml file that has all the data of all the layers from that array.
-	 *
+	 * @param name the directory url place
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void mulToKml(String name) {
 		MultiCSV mult=new MultiCSV(name);
-		ArrayList<String> listCsv = mult.foo(name);
+		ArrayList<String> listCsv = mult.fileReciever(name);//get a directory
 		Iterator<String> it = listCsv.iterator();
 		while(it.hasNext()) {
 			String str=it.next();
-			Layer templay=new Layer(str);
+			Layer templay=new Layer(str);//create a new layer
 			list.add(templay);
 		}
 		Layer kml = new Layer();
 		Iterator<GIS_layer> it2 = list.iterator();
 		while(it2.hasNext()) {
 			Layer temp=(Layer) it2.next();
-			kml.addAll(temp);
+			kml.addAll(temp);//add the current layer data to kml 
 		}
-		kml.sendToKml();
+		kml.sendToKml();//create a kml file
 
 
 	}
