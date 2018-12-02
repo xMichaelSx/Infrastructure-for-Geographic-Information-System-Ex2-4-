@@ -49,7 +49,7 @@ private static int num=0;
 			if(i>1) {
 				pw.append("<Placemark>\n");
 				pw.append("<name><![CDATA["+element.getData().getSSId()+"]]></name> \n");
-				pw.append("<description><![CDATA[BSSID: Capabilities:Timestamp: <b>"+element.getData().getUTC()+"</b><br/>Date: <b>"+"</b>]]></description><styleUrl>#red</styleUrl>\n");
+				pw.append("<description><![CDATA[BSSID: Capabilities:Timestamp: <b>"+element.getData().utcToString()+"</b><br/>Date: <b>"+element.getData().dateToString()+"</b>]]></description><styleUrl>#red</styleUrl>\n");
 				pw.append("<Point> \n");
 				pw.append("<coordinates>"+element.gety()+","+element.getx()+"</coordinates></Point>\n");
 				pw.append("</Placemark>\n");

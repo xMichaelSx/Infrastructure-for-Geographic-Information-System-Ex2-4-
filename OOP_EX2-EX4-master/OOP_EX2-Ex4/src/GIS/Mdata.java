@@ -1,6 +1,7 @@
 package GIS;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import Geom.Point3D;
 
@@ -24,7 +25,7 @@ public class Mdata implements Meta_data  {
 			array[i]=array1[i];
 		}
 
-		//				MAC;array[1]=SSID;array[2]=AuthMode;array[3]=TimeDate
+		
 	}
 	
 	/**
@@ -33,6 +34,7 @@ public class Mdata implements Meta_data  {
 	 */
 	@Override //TODO need to repair the colors
 	public long getUTC() {
+		
 		String temp = TimeDate.split(" ")[1];
 		String temp2[] = temp.split(":");
 		String timestr=temp2[0]+temp2[1];
@@ -92,5 +94,13 @@ public class Mdata implements Meta_data  {
 	}
 	public String getType() {
 		return this.Type;
+	}
+	public String utcToString() {
+	String temp=TimeDate.split(" ")[1];
+	return temp;
+	}
+	public String dateToString() {
+		String temp=TimeDate.split(" ")[0];
+		return temp;
 	}
 }

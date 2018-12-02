@@ -1,6 +1,9 @@
 package Coords;
 
 import Algorithems.MultiCSV;
+import File_format.Csv2kml;
+import GIS.Layer;
+import GIS.myGisElement;
 import GIS.myGisProject;
 
 //import com.sun.java.util.jar.pack.Package.File;
@@ -44,20 +47,20 @@ public class testtemp extends MyCoords{
 //		double[] arr=c.azimuth_elevation_dist(gps1, gps2);
 //		System.out.println("azimuth= "+arr[0]+" "+"elvation= "+arr[1]+" "+"distance= "+arr[2]);
 		
-//		Csv2kml c = new Csv2kml("WigleWifi_20171201110209.csv");
-//		c.csvReader();
+	//	Csv2kml c = new Csv2kml("WigleWifi_20171201110209.csv");
+	//	c.csvReader();
 //		File file = new File("C:\\Users\\zzkmp\\eclipse-workspace\\OOP_EX2-EX4-master.zip_expanded");
 	
 		
 	
-//		Csv2kml cs=new Csv2kml("WigleWifi_20171201110209.csv");
-//		Layer gisarr=new Layer("WigleWifi_20171201110209.csv");
-//		gisarr.sendToCsv();
+		//Csv2kml cs=new Csv2kml("WigleWifi_20171201110209.csv");
+	//	Layer gisarr=new Layer("WigleWifi_20171201110209.csv");
+//	gisarr.sendToKml();
 				
 	myGisProject arr=new myGisProject();
 	String str="C:\\Users\\zzkmp\\eclipse-workspace\\OOP_EX2-EX4-master.zip_expanded";
 	arr.mulToKml(str);
-	
+		
 	}
 	
 		

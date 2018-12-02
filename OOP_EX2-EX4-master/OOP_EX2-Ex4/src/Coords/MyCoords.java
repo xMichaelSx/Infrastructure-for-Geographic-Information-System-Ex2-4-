@@ -76,18 +76,12 @@ public class MyCoords implements coords_converter {
 	 */
 	@Override
 	public double[] azimuth_elevation_dist(Point3D gps0, Point3D gps1) {
+		
 		double azimuth= azimuthFinder(gps0, gps1); // azimuth
-
 		double distance=distance3d(gps0, gps1);
-
-		Point3D temp = new Point3D(gps1.x(),gps0.y()); // elevation
-		double distance2=distance3d(temp, gps1);
-		double elevation = Math.asin(distance2/distance); //TODO ?!?
-
+		double elevation = Math.asin(gps1.z()-gps0.z()/distance); // elevation pitch TODO
 		double polarVector[] = {azimuth, elevation, distance};
 		return polarVector;
-
-
 	}
 
 	/**

@@ -35,13 +35,33 @@ public class Layer implements GIS_layer {
 	 *
 	 */
 	@Override
-	public boolean add(GIS_element e) {
-		return layerSet.add(e);
+	public boolean add(GIS_element e) { //TODO
+		if(layerSet.contains(e))
+			return false; // already exists so we don't add again
+		else {
+			return layerSet.add(e); // we add the element
+		}
+		
 	}
 
-	@Override
-	public boolean addAll(Collection<? extends GIS_element> c) {
-		return layerSet.addAll(c);
+	@Override //TODO
+	public boolean addAll(Collection<? extends GIS_element> c) { // true if this collection changed as a result of the call
+		int counter = 0;
+		boolean flag = false;
+		Iterator<? extends GIS_element> it = c.iterator();
+		while(it.hasNext()) {
+			GIS_element temp = it.next();
+			flag = this.add(temp);
+			if(flag == true)
+				counter++;
+			
+			flag = false; // reseting the flag for further use
+		}
+		if(counter>0)
+			return true; // collection changed
+		else
+			return false; // didn't add at all.
+		
 	}
 
 	@Override
